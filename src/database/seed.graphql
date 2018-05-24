@@ -1,0 +1,11 @@
+mutation {
+  foo1: createFoo(data: { name: "The homie" }) {
+    name
+  }
+  foo2: createFoo(data: { name: "The second homie" }) {
+    name
+  }
+  someFoo: createFoo(data: { name: "Some foo" }) {
+    name
+  }
+}

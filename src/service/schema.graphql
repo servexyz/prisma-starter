@@ -1,0 +1,8 @@
+type Query {
+  supFoo(name: String): Foo
+}
+
+type Foo {
+  id: ID!
+  name: String
+}

@@ -1,2 +1,17 @@
-endpoint: http://localhost:4466
+service: prisma-starter
+stage: local
+cluster: local
+endpoint: http://localhost:4000
+# endpoint: ${env:PRISMA_ENDPOINT}
 datamodel: datamodel.graphql
+seed:
+  import: seed.graphql
+
+disableAuth: true
+# Download the GraphQL schema of the Prisma API into 
+# `service/generated/prisma.graphql` (as specfied in `.graphqlconfig.yml`).
+hooks:
+  post-deploy:
+    - echo "Deployment finished"
+    - graphql get-schema --project database
+    - graphql prepare

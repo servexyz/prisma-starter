@@ -1,4 +1,5 @@
-type User {
+type Foo {
   id: ID! @unique
-  name: String!
+  name: String
+  secretFoo: String @default(value: "i r secret")
 }
