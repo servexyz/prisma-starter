@@ -1,5 +1,6 @@
 endpoint: ${env:PRISMA_ENDPOINT}
-
+stage: local
+cluster: local
 datamodel: datamodel.graphql
 
 # The secret is used to generate JTWs which allow to authenticate 
