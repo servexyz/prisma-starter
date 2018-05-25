@@ -1,8 +1,7 @@
 type Query {
-  supFoo(name: String): Foo
+  allFoos: [Foo]!
 }
 
 type Foo {
-  id: ID!
   name: String
 }

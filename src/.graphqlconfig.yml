@@ -1,10 +1,25 @@
 projects:
-  prismaStarter:
+  app:
     schemaPath: service/schema.graphql
     extensions:
       endpoints:
         default: http://localhost:4000
-  database:
+  prisma:
     schemaPath: service/generated/prisma.graphql
     extensions:
       prisma: database/prisma.yml
+      codegen:
+      - generator: prisma-binding
+        language: javascript
+        output:
+          binding: service/generated/prisma.ts
+# projects:
+#   prismaStarter:
+#     schemaPath: service/schema.graphql
+#     extensions:
+#       endpoints:
+#         default: ${env:PRISMA_ENDPOINT}
+#   database:
+#     schemaPath: service/generated/prisma.graphql
+#     extensions:
+#       prisma: database/prisma.yml
