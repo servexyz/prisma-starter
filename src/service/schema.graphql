@@ -4,4 +4,5 @@ type Query {
 
 type Foo {
   name: String
+  secretFoo: String
 }
