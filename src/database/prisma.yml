@@ -1,6 +1,4 @@
 endpoint: ${env:PRISMA_ENDPOINT}
-stage: local
-cluster: local
 datamodel: datamodel.graphql
 
 # The secret is used to generate JTWs which allow to authenticate 
@@ -9,10 +7,8 @@ datamodel: datamodel.graphql
 # you don't need to generate the JWTs manually as the library is doing that for you
 # (this is why you're passing it to the `Prisma` constructor).
 # Here, the secret is loaded as an environment variable from .env.
-secret: ${env:PRISMA_SECRET}
-# disableAuth: true
+# secret: ${env:PRISMA_SECRET}
 
-# Defines how to seed data to the database upon the initial deploy.
 seed:
   import: seed.graphql
 
@@ -20,20 +16,3 @@ hooks:
   post-deploy:
     - graphql get-schema -p database
     - graphql codegen
-
-# service: prisma-starter
-# stage: local
-# cluster: local
-# endpoint: ${env:PRISMA_ENDPOINT}
-# datamodel: datamodel.graphql
-# seed:
-#   import: seed.graphql
-
-# disableAuth: true
-# # Download the GraphQL schema of the Prisma API into 
-# # `service/generated/prisma.graphql` (as specfied in `.graphqlconfig.yml`).
-# hooks:
-#   post-deploy:
-#     - echo "Deployment finished"
-#     - graphql get-schema --project database
-#     - graphql prepare

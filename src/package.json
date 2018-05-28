@@ -2,8 +2,7 @@
   "name": "prisma",
   "scripts": {
     "start": "nodemon -e js,graphql -x node -r dotenv/config service/index.js",
-    "debug":
-      "nodemon -e js,graphql -x node --inspect -r dotenv/config service/index.js",
+    "debug": "nodemon -e js,graphql -x node --inspect -r dotenv/config service/index.js",
     "playground": "graphql playground",
     "dev": "npm-run-all --parallel start playground"
   },
