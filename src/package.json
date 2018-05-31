@@ -1,8 +1,7 @@
 {
-  "name": "prisma",
+  "name": "prisma-starter",
   "scripts": {
-    "start": "nodemon -e js,graphql -x node -r dotenv/config service/index.js",
-    "debug": "nodemon -e js,graphql -x node --inspect -r dotenv/config service/index.js",
+    "start": "babel-node service/index.js",
     "playground": "graphql playground",
     "dev": "npm-run-all --parallel start playground"
   },
@@ -13,10 +12,35 @@
     "prisma-binding": "1.5.19"
   },
   "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.40",
+    "@babel/core": "^7.0.0-beta.39",
+    "@babel/node": "^7.0.0-beta.39",
+    "@babel/preset-env": "^7.0.0-beta.39",
+    "babel-plugin-dotenv": "^0.1.1",
     "dotenv": "5.0.1",
     "graphql-cli": "2.16.0",
     "nodemon": "1.17.4",
     "npm-run-all": "4.1.3",
     "prisma": "1.8.3"
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "9.3.0"
+          }
+        }
+      ]
+    ],
+    "plugins": [
+      [
+        "babel-plugin-dotenv",
+        {
+          "replacedModuleName": "babel-dotenv"
+        }
+      ]
+    ]
   }
 }

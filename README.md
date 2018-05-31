@@ -14,3 +14,16 @@
 | Our Service | local | 4000 |
 | Prisma      | local | 4466 |
 | Database    | local | 3306 |
+
+#### Environment Variables
+
+**Database**
+`${env: MY_ENV_VARIABLE}`
+
+**Service**
+
+1.  Import in header
+    `import { MY_ENV_VARIABLE } from 'babel-dotenv'
+
+2.  Use anywhere (_without process.env_)
+    `MY_ENV_VARIABLE`
