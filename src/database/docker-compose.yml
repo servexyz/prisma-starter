@@ -1,10 +1,13 @@
-version: '3'
+version: "3"
 services:
+  prisma-service:
+    build:
+      context: ../service
   prisma:
-    image: prismagraphql/prisma:1.8
+    image: prismagraphql/prisma:1.13
     restart: always
     ports:
-    - "4466:4466"
+      - "4466:4466"
     environment:
       PRISMA_CONFIG: |
         port: 4466
@@ -26,4 +29,4 @@ services:
     volumes:
       - mysql:/var/lib/mysql
 volumes:
-  mysql:
+  mysql: ~
