@@ -40,7 +40,7 @@ services:
     depends_on:
       - prisma
       - mysql
-    command: './wait-for-it.sh prisma:4466 -- concurrently "ls -a /usr/src" "ls -a /usr/src/service" "prisma deploy" "yarn start"'
+    command: './wait-for-it.sh prisma:4466 -- concurrently "ls -a /usr/src" "ls -a /usr/src/service" "prisma seed" "yarn start"'
     restart: "no"
 volumes:
   mysql: null

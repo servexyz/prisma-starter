@@ -9,10 +9,10 @@ projects:
     extensions:
       prisma: database/prisma.yml
       codegen:
-      - generator: prisma-binding
-        language: javascript
-        output:
-          binding: service/generated/prisma.js
+        - generator: prisma-binding
+          language: javascript
+          output:
+            binding: service/generated/prisma.js
 # projects:
 #   prismaStarter:
 #     schemaPath: service/schema.graphql
