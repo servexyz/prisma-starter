@@ -7,6 +7,7 @@ COPY src/yarn.lock .
 COPY .env .
 COPY wait-for-it.sh .
 
+RUN npm install -g concurrently
 RUN npm install -g prisma
 RUN chmod +x ./wait-for-it.sh
 RUN yarn install
