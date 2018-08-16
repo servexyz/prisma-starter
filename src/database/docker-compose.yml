@@ -35,14 +35,12 @@ services:
       PRISMA_ENDPOINT: http://prisma:4466
       PRISMA_CLUSTER: local
       PRISMA_SECRET: ${PRISMA_SECRET}
-    restart: always
     depends_on:
       - "prisma"
       - "mysql"
+    command:
+      ["./wait-for-it.sh", "prisma:4466", "--", "prisma deploy && yarn start"]
+    restart: always
 
 volumes:
   mysql: ~
-
-networks:
-  default:
-    name: prisma-starter-net
