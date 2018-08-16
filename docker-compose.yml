@@ -34,7 +34,7 @@ services:
     ports:
       - "4000:4000"
     environment:
-      PRISMA_ENDPOINT: "http://prisma:4466"
+      PRISMA_ENDPOINT: http://prisma:4466
       PRISMA_CLUSTER: local
       PRISMA_SECRET: "${PRISMA_SECRET}"
     depends_on:

@@ -4,6 +4,9 @@ WORKDIR /usr/src
 
 COPY src/package.json .
 COPY src/yarn.lock .
+COPY prisma.yml .
+COPY seed.graphql .
+COPY datamodel.graphql .
 COPY .env .
 COPY wait-for-it.sh .
 
