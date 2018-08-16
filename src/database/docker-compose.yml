@@ -1,14 +1,12 @@
 version: "3"
 services:
-  prisma-service:
-    build: "."
-    ports:
-      - "4000:4000"
   prisma:
     image: prismagraphql/prisma:1.13
     restart: always
     ports:
       - "4466:4466"
+    depends_on:
+      - "mysql"
     environment:
       PRISMA_CONFIG: |
         port: 4466
@@ -29,5 +27,22 @@ services:
       MYSQL_ROOT_PASSWORD: prisma
     volumes:
       - mysql:/var/lib/mysql
+  prisma-service:
+    build: "."
+    ports:
+      - "4000:4000"
+    environment:
+      PRISMA_ENDPOINT: http://prisma:4466
+      PRISMA_CLUSTER: local
+      PRISMA_SECRET: ${PRISMA_SECRET}
+    restart: always
+    depends_on:
+      - "prisma"
+      - "mysql"
+
 volumes:
   mysql: ~
+
+networks:
+  default:
+    name: prisma-starter-net
