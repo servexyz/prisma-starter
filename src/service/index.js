@@ -1,6 +1,7 @@
 import { GraphQLServer } from "graphql-yoga";
 import { PRISMA_ENDPOINT } from "babel-dotenv";
 import { Prisma } from "prisma-binding";
+import path from "path";
 
 //TODO: Create resolvers directory with lazy loading index / spread
 const resolvers = {
@@ -17,8 +18,9 @@ const resolvers = {
 };
 
 //TODO: Replace all endpoints with env variables
+let typeDefs = path.join(__dirname, "schema.graphql");
 const server = new GraphQLServer({
-  typeDefs: "service/schema.graphql",
+  typeDefs,
   resolvers,
   context: req => ({
     ...req,
