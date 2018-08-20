@@ -1,10 +1,10 @@
-version: "3"
+version: '3'
 services:
   prisma:
-    image: "prismagraphql/prisma:1.13"
+    image: 'prismagraphql/prisma:1.13'
     restart: always
     ports:
-      - "4466:4466"
+      - '4466:4466'
     depends_on:
       - mysql
     environment:
@@ -21,26 +21,26 @@ services:
             password: prisma
             migrations: true
   mysql:
-    image: "mysql:5.7"
+    image: 'mysql:5.7'
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: prisma
     volumes:
-      - "mysql:/var/lib/mysql"
+      - 'mysql:/var/lib/mysql'
   prisma-service:
     build:
       context: .
       dockerfile: PrismaServiceDockerfile
     ports:
-      - "4000:4000"
+      - '4000:4000'
     environment:
-      PRISMA_ENDPOINT: http://prisma:4466
+      PRISMA_ENDPOINT: 'http://prisma:4466'
       PRISMA_CLUSTER: local
-      PRISMA_SECRET: "${PRISMA_SECRET}"
+      PRISMA_SECRET: '${PRISMA_SECRET}'
     depends_on:
       - prisma
       - mysql
     command: './wait-for-it.sh prisma:4466 -- concurrently "ls -a /usr/src" "ls -a /usr/src/service" "prisma seed" "yarn start"'
-    restart: "no"
+    restart: 'no'
 volumes:
   mysql: null
