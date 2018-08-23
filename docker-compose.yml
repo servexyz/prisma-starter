@@ -36,11 +36,11 @@ services:
     environment:
       PRISMA_ENDPOINT: "http://prisma:4466"
       PRISMA_CLUSTER: local
-      PRISMA_SECRET: "${PRISMA_SECRET}"
+      PRISMA_SECRET: ${PRISMA_SECRET}
     depends_on:
       - prisma
       - mysql
-    command: './wait-for-it.sh prisma:4466 -- concurrently "ls -a /usr/src" "ls -a /usr/src/service" "prisma deploy" "prisma seed" "yarn start"'
+    command: './wait-for-it.sh prisma:4466 -- concurrently "prisma deploy" "prisma seed" "yarn start"'
     restart: "no"
 volumes:
   mysql: null
