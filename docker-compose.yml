@@ -26,7 +26,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: prisma
     volumes:
-      - "mysql:/va/lib/mysql"
+      - "mysql:/var/lib/mysql"
   prisma-service:
     build:
       context: .

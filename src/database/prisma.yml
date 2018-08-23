@@ -12,6 +12,7 @@ datamodel: datamodel.graphql
 seed:
   import: seed.graphql
 
+# post-deploy is run after `prisma deploy` is executed
 hooks:
   post-deploy:
     - graphql get-schema -p database
