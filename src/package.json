@@ -1,7 +1,9 @@
 {
   "name": "prisma-starter",
   "scripts": {
-    "start": "npm run docker:all",
+    "start": "npm run start:docker:db",
+    "start:docker:db": "npm-run-all --serial docker:db dev",
+    "start:docker:all": "npm run docker:all",
     "start:vanilla": "babel-node service/index.js",
     "playground": "graphql playground",
     "dev": "PRISMA_ENDPOINT=http://localhost:4466 npm-run-all --parallel start:vanilla playground",
