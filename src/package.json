@@ -1,14 +1,15 @@
 {
   "name": "prisma-starter",
   "scripts": {
-    "start": "npm run start:docker:db",
+    "start": "npm run start:docker:all",
     "start:docker:db": "npm-run-all --serial docker:db dev",
     "start:docker:all": "npm run docker:all",
+    "start:docker:entrypoint": "npm run start:vanilla",
     "start:vanilla": "babel-node service/index.js",
     "playground": "graphql playground",
     "dev": "PRISMA_ENDPOINT=http://localhost:4466 npm-run-all --parallel start:vanilla playground",
     "docker:db": "docker-compose -f database/docker-compose.db.yml up -d",
-    "docker:all": "docker-compose -f ../docker-compose.yml up -d"
+    "docker:all": "docker-compose -f docker-compose.all.yml up -d"
   },
   "dependencies": {
     "bcryptjs": "2.4.3",
