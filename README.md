@@ -17,6 +17,9 @@
 
 ### Build Scripts
 
+> TLDR:
+> `yarn install && yarn start`
+
 - `start`
 
   > This is the default entry point to make your development easier. Replace this with "start:docker:db" or "start:docker:all" depending on your preferred development workflow.
@@ -42,7 +45,15 @@
   > This launches the local GraphQL Playground on your machine.
 
 - `dev`
-  >
+
+  > Launch prisma-service locally with GraphQL Playground
+
+- `docker:db`
+
+  > Docker-compose script for _only_ Prisma Engine & MySQL
+
+- `docker:all`
+  > Docker-compose script for Prisma Engine, MySQL & your Node service.
 
 #### localhost:4466 vs prisma:4466
 
