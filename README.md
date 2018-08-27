@@ -1,5 +1,27 @@
 # Prisma Starter
 
+> Run your prisma service as a docker container with the prisma engine and MySQL Database.
+
+<!-- TOC -->
+
+- [Prisma Starter](#prisma-starter)
+  - [Getting Started](#getting-started)
+    - [Where :: Code](#where--code)
+    - [Where :: Servers](#where--servers)
+    - [Build Scripts](#build-scripts)
+      - [localhost:4466 vs prisma:4466](#localhost4466-vs-prisma4466)
+
+<!-- /TOC -->
+
+## Getting Started
+
+- **Install**
+  > cd src/ && yarn install
+- **Start**
+  > yarn start
+
+---
+
 ### Where :: Code
 
 | Directory      | Description                       |
@@ -14,6 +36,8 @@
 | Our Service | local | 4000 |
 | Prisma      | local | 4466 |
 | Database    | local | 3306 |
+
+---
 
 ### Build Scripts
 
