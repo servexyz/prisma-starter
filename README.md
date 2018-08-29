@@ -20,6 +20,8 @@
 - **Start**
   > yarn start
 
+See [Build Scripts](#build-scripts) for options.
+
 ---
 
 ### Where :: Code
@@ -41,12 +43,17 @@
 
 ### Build Scripts
 
-> TLDR:
-> `yarn install && yarn start`
+**Default**
+
+> Modify start to the primary script of your choice.
 
 - `start`
 
   > This is the default entry point to make your development easier. Replace this with "start:docker:db" or "start:docker:all" depending on your preferred development workflow.
+
+**Primary**
+
+> Primary scripts should be called by "npm start" script
 
 - `start:docker:db`
 
@@ -55,6 +62,10 @@
 - `start:docker:all`
 
   > This runs Prisma Engine (:4466), MySQL (:3306) and your Node service (:4000) in Docker containers
+
+**Helper**
+
+> Helper scripts should be called by Primary scripts
 
 - `start:docker:entrypoint`
 
