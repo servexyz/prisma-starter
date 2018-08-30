@@ -1,7 +1,7 @@
 {
   "name": "prisma-starter",
   "scripts": {
-    "start": "npm run start:docker:db",
+    "start": "npm run start:docker:all",
     "start:docker:db": "npm-run-all --serial docker:db dev:liveReload",
     "start:docker:all": "npm run docker:all",
     "start:docker:entrypoint": "npm run start:vanilla",
