@@ -99,10 +99,7 @@ See [Build Scripts](#build-scripts) for options.
 **open localhost:4000 && open localhost:4466**
 ![prstar_localhost_4000_4466](https://github.com/servexyz/prisma-starter/blob/master/docs/prstar_localhost_4000_4466.gif)
 
-> Want to see gifs of docker-compose.db.yml or docker-compose.all.yml executing?
-> Want to see screenshots of prisma terminal?
-> Was this well-intentioned gif too fast for you to see results?
-> Visit [demo.md](./docs/demo.md)
+> More gifs and screenshots available here: [demo.md](./docs/demo.md)
 
 ---
 
