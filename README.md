@@ -10,8 +10,6 @@
     - [Where :: Servers](#where--servers)
     - [Build Scripts](#build-scripts)
     - [Gif Demo](#gif-demo)
-      - [Demo -> Install](#demo---install)
-      - [Demo -> Results](#demo---results)
       - [localhost:4466 vs prisma:4466](#localhost4466-vs-prisma4466)
 
 <!-- /TOC -->
@@ -95,18 +93,11 @@ See [Build Scripts](#build-scripts) for options.
 
 ### Gif Demo
 
-#### Demo -> Install
-
-**npm run docker:start:all**
-![prstar_docker_all](https://github.com/servexyz/prisma-starter/blob/master/docs/prstar_docker_all.gif)
-
-**npm run docker:start:db**
-![prstar_docker_db](https://github.com/servexyz/prisma-starter/blob/master/docs/prstar_docker_db.gif)
-
-#### Demo -> Results
-
 **open localhost:4000 && open localhost:4466**
 ![prstar_localhost_4000_4466](https://github.com/servexyz/prisma-starter/blob/master/docs/prstar_localhost_4000_4466.gif)
+
+> Want to see gifs of docker-compose.db.yml or docker-compose.all.yml executing?
+> Visit [demo.md](./docs/demo.md)
 
 ---
 
