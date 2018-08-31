@@ -10,10 +10,10 @@
 
 ### Results
 
-**http://localhost:4000**
+**localhost:4000**
 ![localhost_4000](localhost_4000.png)
 
-**http://localhost:4466**
+**localhost:4466**
 ![localhost_4466](localhost_4466.png)
 
 **CLI Output**
