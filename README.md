@@ -98,15 +98,15 @@ See [Build Scripts](#build-scripts) for options.
 #### Demo -> Install
 
 **npm run docker:start:all**
-![prstar_docker_all](https://github.com/servexyz/prisma-starter/blob/master/docs/prstar_docker_all.mp4)
+![prstar_docker_all](https://github.com/servexyz/prisma-starter/blob/master/docs/prstar_docker_all.gif)
 
 **npm run docker:start:db**
-![prstar_docker_db](https://github.com/servexyz/prisma-starter/blob/master/docs/prstar_docker_db.mp4)
+![prstar_docker_db](https://github.com/servexyz/prisma-starter/blob/master/docs/prstar_docker_db.gif)
 
 #### Demo -> Results
 
 **open localhost:4000 && open localhost:4466**
-![prstar_localhost_4000_4466](https://github.com/servexyz/prisma-starter/blob/master/docs/prstar_localhost_4000_4466.mp4)
+![prstar_localhost_4000_4466](https://github.com/servexyz/prisma-starter/blob/master/docs/prstar_localhost_4000_4466.gif)
 
 ---
 
