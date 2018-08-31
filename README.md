@@ -93,6 +93,9 @@ See [Build Scripts](#build-scripts) for options.
 
 ### Gif Demo
 
+> In case you're wondering, the demo below was captured after running `npm run start:docker:db`.
+> However, from the browser, this is functionally identical to running `npm run start:docker:all`
+
 **open localhost:4000 && open localhost:4466**
 ![prstar_localhost_4000_4466](https://github.com/servexyz/prisma-starter/blob/master/docs/prstar_localhost_4000_4466.gif)
 
