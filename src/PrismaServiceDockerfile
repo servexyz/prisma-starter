@@ -1,4 +1,4 @@
-FROM node:10
+FROM mhart/alpine-node:10
 
 WORKDIR /usr/src
 
@@ -10,6 +10,7 @@ COPY database/datamodel.graphql .
 COPY .env .
 COPY wait-for-it.sh .
 
+RUN apk add --no-cache bash #Need this for alpine-node
 RUN yarn global add concurrently
 RUN yarn global add prisma
 RUN chmod +x ./wait-for-it.sh
