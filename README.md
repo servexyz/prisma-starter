@@ -70,7 +70,7 @@ See [Build Scripts](#build-scripts) for options.
 
 - `start:docker:entrypoint`
 
-  > This is what's called the Dockerfile's CMD entry point.
+  > This is what's called by the docker-compose.all.yml
 
 - `start:vanilla`
 
