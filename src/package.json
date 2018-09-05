@@ -3,16 +3,16 @@
   "scripts": {
     "start": "npm run start:docker:all",
     "build": "npm run docker:rebuild:all",
-    "start:docker:db": "npm-run-all --serial docker:db dev:liveReload",
-    "start:docker:all": "npm run docker:all",
-    "start:docker:entrypoint": "PRISMA_ENDPOINT=http://prisma:4466 npm run start:vanilla",
+    "start:docker:db": "PRISMA_ENDPOINT=http://localhost:4466 npm-run-all --serial docker:compose:db dev",
+    "start:docker:all": "PRISMA_ENDPOINT=http://prisma:4466 npm run docker:compose:all",
+    "start:docker:entrypoint": "npm run start:vanilla",
     "start:vanilla": "babel-node service/index.js",
     "playground": "graphql playground",
-    "dev": "PRISMA_ENDPOINT=http://localhost:4466 npm-run-all --parallel start:vanilla playground",
-    "dev:liveReload": "PRISMA_ENDPOINT=http://localhost:4466 nodemon --watch service/index.js --exec 'babel-node service/index.js'",
-    "docker:db": "docker-compose -f database/docker-compose.db.yml up -d",
+    "dev": "npm-run-all --parallel dev:liveReload playground",
+    "dev:liveReload": "nodemon --watch service/index.js --exec 'babel-node service/index.js'",
+    "docker:compose:db": "docker-compose -f database/docker-compose.db.yml up -d",
+    "docker:compose:all": "docker-compose -f docker-compose.all.yml up -d",
     "docker:rebuild:db": "docker-compose -f database/docker-compose.db.yml up -d --force-recreate --build",
-    "docker:all": "docker-compose -f docker-compose.all.yml up -d",
     "docker:rebuild:all": "docker-compose -f docker-compose.all.yml up -d --force-recreate --build"
   },
   "dependencies": {
