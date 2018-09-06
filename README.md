@@ -44,15 +44,26 @@ See [Build Scripts](#build-scripts) for options.
 
 ### Build Scripts
 
-**Default**
+**Terminal Scripts**
 
-> Modify start to the primary script of your choice.
+> These are scripts which are intended to be run from your terminal
 
 - `start`
 
   > This is the default entry point to make your development easier. Replace this with "start:docker:db" or "start:docker:all" depending on your preferred development workflow.
 
-**Primary**
+- `build`
+
+  > This is the default entry point for rebuilding. By default, it's set to "docker:rebuild:all" because start is set to "start:docker:all". Build and start should match. ...is there a cleaner way to do this? 🤔
+
+- `dev`
+
+  > This script will either be called when "start:docker:db" is called or you can call it manually. Not sure if there's any problem with it being set to dev:liveReload regardless of environmemnt... Hrm...
+
+- `playground`
+  > NPM script to open up GraphQL Playground
+
+> **Start Options**
 
 > Primary scripts should be called by "npm start" script
 
@@ -64,31 +75,37 @@ See [Build Scripts](#build-scripts) for options.
 
   > This runs Prisma Engine (:4466), MySQL (:3306) and your Node service (:4000) in Docker containers
 
-**Helper**
+**Build Options**
 
 > Helper scripts should be called by Primary scripts
 
+- `docker:rebuild:db`
+
+  > This rebuilds database/docker-compose.db.yml.
+
+- `docker:rebuild:all`
+
+  > This rebuilds docker-compose.all.yml
+
+**Helper Scripts -- Ignore These**
+
 - `start:docker:entrypoint`
 
-  > This is what's called the Dockerfile's CMD entry point.
+  > This is what's called by the docker-compose.all.yml
 
 - `start:vanilla`
 
   > This runs babel-node against your service's index file _without_ livereload enabled.
 
-- `playground`
+* `dev:liveReload`
 
-  > This launches the local GraphQL Playground on your machine.
+  > Runs nodemon. Watches changes and reloads your server. Intended for use with start:docker:db
 
-- `dev`
-
-  > Launch prisma-service locally with GraphQL Playground
-
-- `docker:db`
+* `docker:compose:db`
 
   > Docker-compose script for _only_ Prisma Engine & MySQL
 
-- `docker:all`
+* `docker:compose:all`
   > Docker-compose script for Prisma Engine, MySQL & your Node service.
 
 ### Gif Demo
