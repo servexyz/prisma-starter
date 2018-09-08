@@ -14,7 +14,9 @@
     "docker:compose:all": "docker-compose -f docker-compose.all.yml up -d",
     "docker:rebuild:db": "docker-compose -f database/docker-compose.db.yml up -d --force-recreate --build",
     "docker:rebuild:all": "docker-compose -f docker-compose.all.yml up -d --force-recreate --build",
-    "test": "ava"
+    "test": "npm run test:liveReload",
+    "test:vanilla": "ava",
+    "test:liveReload": "ava --watch"
   },
   "dependencies": {
     "bcryptjs": "2.4.3",
