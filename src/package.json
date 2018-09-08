@@ -16,6 +16,7 @@
     "docker:rebuild:all": "docker-compose -f docker-compose.all.yml up -d --force-recreate --build",
     "test": "npm run test:liveReload",
     "test:vanilla": "ava",
+    "test:verbose": "ava --verbose",
     "test:liveReload": "ava --watch"
   },
   "dependencies": {
