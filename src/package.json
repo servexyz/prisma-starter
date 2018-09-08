@@ -13,7 +13,14 @@
     "docker:compose:db": "docker-compose -f database/docker-compose.db.yml up -d",
     "docker:compose:all": "docker-compose -f docker-compose.all.yml up -d",
     "docker:rebuild:db": "docker-compose -f database/docker-compose.db.yml up -d --force-recreate --build",
-    "docker:rebuild:all": "docker-compose -f docker-compose.all.yml up -d --force-recreate --build"
+    "docker:rebuild:all": "docker-compose -f docker-compose.all.yml up -d --force-recreate --build",
+    "test": "npm run test:liveReload",
+    "test:vanilla": "ava",
+    "test:verbose": "ava --verbose",
+    "test:liveReload": "ava --watch",
+    "ci": "npm run ci:local",
+    "ci:local": "trevor",
+    "ci:remote": "npm run test:vanilla"
   },
   "dependencies": {
     "bcryptjs": "2.4.3",
@@ -25,13 +32,27 @@
     "@babel/cli": "^7.0.0-beta.40",
     "@babel/core": "^7.0.0-beta.39",
     "@babel/node": "^7.0.0-beta.39",
+    "@babel/polyfill": "^7.0.0",
     "@babel/preset-env": "^7.0.0-beta.39",
+    "@babel/register": "^7.0.0",
+    "ava": "^0.25.0",
     "babel-plugin-dotenv": "^0.1.1",
     "dotenv": "5.0.1",
     "graphql-cli": "2.16.0",
     "nodemon": "^1.18.3",
     "npm-run-all": "4.1.3",
+    "npm-starter-sample-module": "^0.0.2",
     "prisma": "1.8.3"
+  },
+  "ava": {
+    "files": [
+      "service/tests/**.js"
+    ],
+    "require": [
+      "@babel/polyfill",
+      "@babel/register"
+    ],
+    "verbose": true
   },
   "babel": {
     "presets": [
