@@ -17,7 +17,10 @@
     "test": "npm run test:liveReload",
     "test:vanilla": "ava",
     "test:verbose": "ava --verbose",
-    "test:liveReload": "ava --watch"
+    "test:liveReload": "ava --watch",
+    "ci": "npm run ci:local",
+    "ci:local": "trevor",
+    "ci:remote": "npm run test:vanilla"
   },
   "dependencies": {
     "bcryptjs": "2.4.3",
