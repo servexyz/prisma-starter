@@ -1,19 +1,19 @@
 {
   "name": "prisma-starter",
   "scripts": {
-    "start": "npm run start:docker:all",
-    "build": "npm run docker:rebuild:all",
+    "start": "npm run start:docker:db",
+    "build": "npm run docker:rebuild:db",
     "start:docker:db": "PRISMA_ENDPOINT=http://localhost:4466 npm-run-all --serial docker:compose:db dev",
     "start:docker:all": "PRISMA_ENDPOINT=http://prisma:4466 npm run docker:compose:all",
     "start:docker:entrypoint": "npm run start:vanilla",
-    "start:vanilla": "babel-node service/index.js",
+    "start:vanilla": "babel-node src/service/index.js",
     "playground": "graphql playground",
     "dev": "npm-run-all --parallel dev:liveReload playground",
-    "dev:liveReload": "nodemon --watch service/index.js --exec 'babel-node service/index.js'",
-    "docker:compose:db": "docker-compose -f database/docker-compose.db.yml up -d",
-    "docker:compose:all": "docker-compose -f docker-compose.all.yml up -d",
-    "docker:rebuild:db": "docker-compose -f database/docker-compose.db.yml up -d --force-recreate --build",
-    "docker:rebuild:all": "docker-compose -f docker-compose.all.yml up -d --force-recreate --build",
+    "dev:liveReload": "nodemon --watch src/service/index.js --exec 'babel-node src/service/index.js'",
+    "docker:compose:db": "docker-compose -f src/database/docker-compose.db.yml up -d",
+    "docker:compose:all": "docker-compose -f .docker-compose.all.yml up -d",
+    "docker:rebuild:db": "docker-compose -f src/database/docker-compose.db.yml up -d --force-recreate --build",
+    "docker:rebuild:all": "docker-compose -f .docker-compose.all.yml up -d --force-recreate --build",
     "test": "npm run test:liveReload",
     "test:vanilla": "ava",
     "test:verbose": "ava --verbose",
@@ -46,7 +46,7 @@
   },
   "ava": {
     "files": [
-      "service/tests/**.js"
+      "src/service/tests/**.js"
     ],
     "require": [
       "@babel/polyfill",
