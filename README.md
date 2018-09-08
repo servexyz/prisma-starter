@@ -2,6 +2,8 @@
 
 > Run your prisma service as a docker container with the prisma engine and MySQL Database.
 
+![travis test badge](https://travis-ci.org/servexyz/prisma-starter.svg?branch=master)
+
 <!-- TOC -->
 
 - [Prisma Starter](#prisma-starter)
