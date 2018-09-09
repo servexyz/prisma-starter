@@ -61,15 +61,11 @@ See [Build Scripts](#build-scripts) for options.
 
 - `test`
 
-  > This executes one of the test children commands. Defaults to liveReload (which runs ava in --watch mode)
+  > This runs docker-compose all & runs ava in --watch mode. Useful when you want to update your tests, but useful when you want to update your tests. Unfortunately, no docker HMR right now so updating source won't work as expected.
 
 - `playground`
 
   > NPM script to open up GraphQL Playground
-
-- `ci`
-
-  > You can ignore this unless you want to run your test suite through [trevor](https://www.npmjs.com/package/trevor). (Trevor is a local Travis-CI implementation)
 
 **Start Options**
 
@@ -94,35 +90,6 @@ See [Build Scripts](#build-scripts) for options.
 - `docker:rebuild:all`
 
   > This rebuilds docker-compose.all.yml
-
-**Helper Scripts -- Ignore These**
-
-- `start:docker:entrypoint`
-
-  > This is what's called by the docker-compose.all.yml
-
-- `start:vanilla`
-
-  > This runs babel-node against your service's index file _without_ livereload enabled.
-
-- `dev:liveReload`
-
-  > Runs nodemon. Watches changes and reloads your server. Intended for use with start:docker:db
-
-- `docker:compose:db`
-
-  > Docker-compose script for _only_ Prisma Engine & MySQL
-
-- `docker:compose:all`
-
-  > Docker-compose script for Prisma Engine, MySQL & your Node service.
-
-- `ci:local`
-
-  > This executes trevor locally
-
-- `ci:remote`
-  > This is called by .travis.yml
 
 ---
 

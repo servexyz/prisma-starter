@@ -16,11 +16,12 @@
     "docker:destroy:allContainers": "docker rm -f $(docker ps -aqf 'name=prisma')",
     "docker:rebuild:db": "docker-compose -f src/database/docker-compose.db.yml up -d --force-recreate --build",
     "docker:rebuild:all": "docker-compose -f .docker-compose.all.yml up -d --force-recreate --build",
-    "test": "npm-run-all --serial docker:compose:all test:liveReload",
-    "test:liveReload": "ava --watch",
-    "ci": "npm run ci:local",
-    "ci:local": "trevor",
-    "ci:remote": "npm run test"
+    "test": " npm run test:all",
+    "test:all": "PRISMA_HOST=http://prisma npm-run-all --serial docker:compose:all test:ava",
+    "test:db": "PRISMA_HOST=http://localhost npm run test:avaWatch",
+    "test:ava": "ava",
+    "test:avaWatch": "ava --watch",
+    "ci:remote": "PRISMA_HOST=http://prisma npm-run-all --serial docker:compose:all test:ava"
   },
   "dependencies": {
     "bcryptjs": "2.4.3",
