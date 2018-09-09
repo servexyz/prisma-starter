@@ -24,7 +24,7 @@ node_js:
 install:
   - yarn install
 script:
-  - yarn test
+  - yarn run ci:remote
 cache:
   directories:
     - "node_modules"
