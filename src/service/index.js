@@ -35,5 +35,5 @@ const server = new GraphQLServer({
 });
 
 server.start(() =>
-  console.log(`Prisma-starter running => http://localhost:4000 foo`)
+  console.log(`Prisma-starter running => http://localhost:4000`)
 );
