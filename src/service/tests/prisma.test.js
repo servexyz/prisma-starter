@@ -1,7 +1,16 @@
 import test from "ava";
 import isReachable from "is-reachable";
+const nodemon = require("nodemon");
+import delay from "delay";
 
-test.before(`ghetto racecase hack`);
+test.before(async t => {
+  //TODO: Figure out less lazy solution
+  // ? Relevant PR comment: https://github.com/servexyz/prisma-starter/pull/25#issuecomment-419687114
+  console.log(
+    "Waiting 3 seconds before restarting to prevent race case with nodemon's watch"
+  );
+  await delay(3000);
+});
 test("process.env.PRISMA_HOST is set", t => {
   t.truthy(process.env.PRISMA_HOST);
 });
