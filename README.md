@@ -69,9 +69,9 @@ See [Build Scripts](#build-scripts) for options.
 
 - `ci`
 
-> You can ignore this unless you want to run your test suite through [trevor](https://www.npmjs.com/package/trevor). (Trevor is a local Travis-CI implementation)
+  > You can ignore this unless you want to run your test suite through [trevor](https://www.npmjs.com/package/trevor). (Trevor is a local Travis-CI implementation)
 
-> **Start Options**
+**Start Options**
 
 > Primary scripts should be called by "npm start" script
 
