@@ -11,6 +11,7 @@ test.before(async t => {
   );
   await delay(3000);
 });
+//TODO: Remove PRISMA_HOST in place of using PRISMA_ENDPOINT. Lazy / duplicative
 test("process.env.PRISMA_HOST is set", t => {
   t.truthy(process.env.PRISMA_HOST);
 });
