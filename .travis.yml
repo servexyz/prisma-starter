@@ -6,17 +6,15 @@ node_js:
   - "8"
   - "9.3.0"
   - "10"
-install:
-  - yarn install
-script:
-  - yarn run test:ava
-env:
-  - PRISMA_ENDPOINT=http://prisma:4466
 cache:
   directories:
     - "node_modules"
 services:
   - docker
+
+env:
+  - PRISMA_ENDPOINT=http://prisma:4466
+  - DOCKER_COMPOSE_VERSION=1.22.0
 before_install:
   # update is required to update the repositories to see the new packages for
   # Docker.
@@ -46,3 +44,9 @@ before_install:
   - docker-compose -f .docker-compose.all.yml up -d
 
   - docker ps
+
+install:
+  - yarn install
+
+script:
+  - yarn run test:ava
