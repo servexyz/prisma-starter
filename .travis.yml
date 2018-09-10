@@ -15,6 +15,8 @@ env:
 cache:
   directories:
     - "node_modules"
+services:
+  - docker
 before_install:
   # update is required to update the repositories to see the new packages for
   # Docker.
