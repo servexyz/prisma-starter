@@ -11,7 +11,6 @@ cache:
     - "node_modules"
 services:
   - docker
-
 env:
   - PRISMA_ENDPOINT=http://prisma:4466
   - DOCKER_COMPOSE_VERSION=1.22.0
@@ -44,9 +43,7 @@ before_install:
   - docker-compose -f .docker-compose.all.yml up -d
 
   - docker ps
-
 install:
   - yarn install
-
 script:
   - yarn run test:ava
