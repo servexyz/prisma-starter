@@ -7,10 +7,9 @@ projects:
   database:
     schemaPath: src/service/generated/prisma.graphql
     extensions:
-      prisma: src/database/prisma.yml
+      prisma: prisma.yml
       codegen:
         - generator: prisma-binding
           language: javascript
           output:
             binding: service/generated/prisma.js
-# TODO: Set default endpoint to env

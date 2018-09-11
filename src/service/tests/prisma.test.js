@@ -12,22 +12,19 @@ test.before(async t => {
   );
   await delay(3000);
 });
-//TODO: Remove PRISMA_HOST in place of using PRISMA_ENDPOINT. Lazy / duplicative
-test("process.env.PRISMA_HOST is set", t => {
-  t.truthy(process.env.PRISMA_HOST);
-});
 
-test(`${process.env.PRISMA_HOST}:4000 is reachable`, async t => {
-  let endpoint = isTravis
-    ? `${process.env.PRISMA_HOST}:4000`
-    : `http://localhost:4000`;
+// var endpoint4000 = isTravis
+//   ? `${process.env.PRISMA_HOST}:4000`
+//   : `http://localhost:4000`;
+
+// var endpoint4466 = isTravis
+//   ? `${process.env.PRISMA_HOST}:4466`
+//   : `http://localhost:4466`;
+
+test(`http://localhost:4000 is reachable`, async t => {
   t.true(await isReachable("http://localhost:4000"));
 });
 
-test(`${process.env.PRISMA_HOST}:4466 is reachable`, async t => {
-  let endpoint = isTravis
-    ? `${process.env.PRISMA_HOST}:4466`
-    : `http://localhost:4466`;
-
+test(`http://localhost:4466 is reachable`, async t => {
   t.true(await isReachable("http://localhost:4466"));
 });

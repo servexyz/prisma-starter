@@ -19,7 +19,7 @@
     "docker:rebuild:all": "docker-compose -f .docker-compose.all.yml up -d --force-recreate --build",
     "test": " npm run test:all:fresh",
     "test:all": "PRISMA_HOST=http://prisma npm-run-all --serial docker:compose:all test:ava",
-    "test:all:fresh": "npm-run-all --serial clean build test:ava",
+    "test:all:fresh": "PRISMA_HOST=http://prisma npm-run-all --serial clean build test:ava",
     "test:db": "PRISMA_HOST=http://localhost npm run test:avaWatch",
     "test:ava": "ava",
     "test:avaWatch": "ava --watch",
@@ -58,7 +58,7 @@
       "@babel/polyfill",
       "@babel/register"
     ],
-    "verbose": true
+    "verbose": false
   },
   "babel": {
     "presets": [

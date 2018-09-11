@@ -1,5 +1,5 @@
 endpoint: ${env:PRISMA_ENDPOINT}
-datamodel: datamodel.graphql
+datamodel: src/database/datamodel.graphql
 
 # The secret is used to generate JTWs which allow to authenticate
 # against your Prisma service. You can use the `prisma token` command from the CLI
@@ -10,7 +10,7 @@ datamodel: datamodel.graphql
 # secret: ${env:PRISMA_SECRET}
 
 seed:
-  import: seed.graphql
+  import: src/database/seed.graphql
 
 # post-deploy is run after `prisma deploy` is executed
 hooks:
