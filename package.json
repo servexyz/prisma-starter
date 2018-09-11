@@ -17,12 +17,12 @@
     "docker:destroy:allContainers": "docker rm -f $(docker ps -aqf 'name=prisma')",
     "docker:rebuild:db": "docker-compose -f src/database/docker-compose.db.yml up -d --force-recreate --build",
     "docker:rebuild:all": "docker-compose -f .docker-compose.all.yml up -d --force-recreate --build",
-    "test": " npm run test:all:fresh",
+    "test": " npm run test:ava:watch",
     "test:all": "PRISMA_HOST=http://prisma npm-run-all --serial docker:compose:all test:ava",
     "test:all:fresh": "PRISMA_HOST=http://prisma npm-run-all --serial clean build test:ava",
-    "test:db": "PRISMA_HOST=http://localhost npm run test:avaWatch",
+    "test:db": "PRISMA_HOST=http://localhost npm run test:ava:watch",
     "test:ava": "ava",
-    "test:avaWatch": "ava --watch",
+    "test:ava:watch": "ava --watch",
     "ci:remote": "npm run test:all"
   },
   "dependencies": {
@@ -58,7 +58,7 @@
       "@babel/polyfill",
       "@babel/register"
     ],
-    "verbose": false
+    "verbose": true
   },
   "babel": {
     "presets": [
