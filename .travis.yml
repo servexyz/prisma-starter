@@ -48,4 +48,4 @@ before_install:
 install:
   - yarn install
 script:
-  - yarn run test:ava
+  - yarn run ci:remote
