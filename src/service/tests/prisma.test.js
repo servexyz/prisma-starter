@@ -22,9 +22,25 @@ test.before(async t => {
 //   : `http://localhost:4466`;
 
 test(`http://localhost:4000 is reachable`, async t => {
-  t.true(await isReachable("http://localhost:4000"));
+  console.log("localhost:4000: ", await isReachable("localhost:4000"));
+  console.log(
+    "http://localhost:4000: ",
+    await isReachable("http://localhost:4000")
+  );
+  console.log(
+    "https://localhost:4000: ",
+    await isReachable("https://localhost:4000")
+  );
+  console.log("prisma:4000: ", await isReachable("prisma:4000"));
+  console.log("http://prisma:4000: ", await isReachable("http://prisma:4000"));
+  console.log(
+    "https://prisma:4000: ",
+    await isReachable("https://prisma:4000")
+  );
+
+  t.true(await isReachable("localhost:4000"));
 });
 
 test(`http://localhost:4466 is reachable`, async t => {
-  t.true(await isReachable("http://localhost:4466"));
+  t.true(await isReachable("localhost:4466"));
 });
