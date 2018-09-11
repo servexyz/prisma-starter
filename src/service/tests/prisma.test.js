@@ -20,3 +20,11 @@ test(`localhost:4000 is reachable`, async t => {
 test(`localhost:4466 is reachable`, async t => {
   t.true(await isReachable("http://localhost:4466"));
 });
+
+// test(`localhost:4000 is reachable`, async t => {
+//   t.true(await isReachable("localhost:4000"));
+// });
+
+// test(`localhost:4466 is reachable`, async t => {
+//   t.true(await isReachable("localhost:4466"));
+// });
