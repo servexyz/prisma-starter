@@ -3,6 +3,7 @@
   "scripts": {
     "start": "npm run start:docker:db",
     "build": "npm run docker:rebuild:db",
+    "clean": "npm run docker:destroy:allContainers",
     "start:docker:db": "PRISMA_ENDPOINT=http://localhost:4466 npm-run-all --serial docker:compose:db dev",
     "start:docker:all": "PRISMA_ENDPOINT=http://prisma:4466 npm run docker:compose:all",
     "start:docker:entrypoint": "npm run start:vanilla",
@@ -12,15 +13,15 @@
     "dev:liveReload": "nodemon --watch src/service/index.js --exec 'babel-node src/service/index.js'",
     "docker:compose:db": "docker-compose -f src/database/docker-compose.db.yml up -d",
     "docker:compose:all": "docker-compose -f .docker-compose.all.yml up -d",
+    "docker:destroy:allContainers": "docker rm -f $(docker ps -aqf 'name=prisma')",
     "docker:rebuild:db": "docker-compose -f src/database/docker-compose.db.yml up -d --force-recreate --build",
     "docker:rebuild:all": "docker-compose -f .docker-compose.all.yml up -d --force-recreate --build",
-    "test": "npm run test:liveReload",
-    "test:vanilla": "ava",
-    "test:verbose": "ava --verbose",
-    "test:liveReload": "ava --watch",
-    "ci": "npm run ci:local",
-    "ci:local": "trevor",
-    "ci:remote": "npm run test:vanilla"
+    "test": " npm run test:db",
+    "test:all": "PRISMA_HOST=http://prisma npm-run-all --serial docker:compose:all test:ava",
+    "test:db": "PRISMA_HOST=http://localhost npm run test:avaWatch",
+    "test:ava": "ava",
+    "test:avaWatch": "ava --watch",
+    "ci:remote": "npm run test:all"
   },
   "dependencies": {
     "bcryptjs": "2.4.3",
@@ -37,9 +38,11 @@
     "@babel/register": "^7.0.0",
     "ava": "^0.25.0",
     "babel-plugin-dotenv": "^0.1.1",
+    "delay": "^4.0.0",
     "dotenv": "5.0.1",
     "graphql-cli": "2.16.0",
-    "nodemon": "^1.18.3",
+    "is-reachable": "^2.4.0",
+    "nodemon": "^1.18.4",
     "npm-run-all": "4.1.3",
     "npm-starter-sample-module": "^0.0.2",
     "prisma": "1.8.3"

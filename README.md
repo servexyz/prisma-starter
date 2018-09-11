@@ -11,6 +11,9 @@
     - [Where :: Code](#where--code)
     - [Where :: Servers](#where--servers)
     - [Build Scripts](#build-scripts)
+      - [Terminal Scripts](#terminal-scripts)
+      - [Start Options](#start-options)
+      - [Build Options](#build-options)
     - [localhost:4466 vs prisma:4466](#localhost4466-vs-prisma4466)
     - [Gif Demo](#gif-demo)
 
@@ -43,7 +46,7 @@ See [Build Scripts](#build-scripts) for options.
 
 ### Build Scripts
 
-**Terminal Scripts**
+##### Terminal Scripts
 
 > These are scripts which are intended to be run from your terminal
 
@@ -51,29 +54,25 @@ See [Build Scripts](#build-scripts) for options.
 
   > This is the default entry point to make your development easier. Replace this with "start:docker:db" or "start:docker:all" depending on your preferred development workflow.
 
+  [Jump to Start Options](#start-options)
+
 - `build`
 
   > This is the default entry point for rebuilding. By default, it's set to "docker:rebuild:all" because start is set to "start:docker:all". Build and start should match. ...is there a cleaner way to do this? 🤔
 
-- `dev`
+  [Jump to Build Options](#build-options)
 
-  > This script will either be called when "start:docker:db" is called or you can call it manually. Not sure if there's any problem with it being set to dev:liveReload regardless of environmemnt... Hrm...
+- `clean`
+
+  > This removes all containers' with "prisma" in its name (ie. all prisma_starter containers are destroyed).
 
 - `test`
 
-  > This executes one of the test children commands. Defaults to liveReload (which runs ava in --watch mode)
+  > This runs docker-compose all & runs ava in --watch mode. Useful when you want to update your tests, but useful when you want to update your tests. Unfortunately, no docker HMR right now so updating source won't work as expected.
 
-- `playground`
+##### Start Options
 
-  > NPM script to open up GraphQL Playground
-
-- `ci`
-
-  > You can ignore this unless you want to run your test suite through [trevor](https://www.npmjs.com/package/trevor). (Trevor is a local Travis-CI implementation)
-
-**Start Options**
-
-> Primary scripts should be called by "npm start" script
+> Start Options are called by [start -- Terminal Scripts](#terminal-scripts)
 
 - `start:docker:db`
 
@@ -83,9 +82,13 @@ See [Build Scripts](#build-scripts) for options.
 
   > This runs Prisma Engine (:4466), MySQL (:3306) and your Node service (:4000) in Docker containers
 
-**Build Options**
+  [Jump back to Terminal Scripts](#terminal-scripts)
 
-> Helper scripts should be called by Primary scripts
+##### Build Options
+
+> Build Options are called by [build -- Terminal Scripts](#terminal-scripts)
+
+>
 
 - `docker:rebuild:db`
 
@@ -94,35 +97,6 @@ See [Build Scripts](#build-scripts) for options.
 - `docker:rebuild:all`
 
   > This rebuilds docker-compose.all.yml
-
-**Helper Scripts -- Ignore These**
-
-- `start:docker:entrypoint`
-
-  > This is what's called by the docker-compose.all.yml
-
-- `start:vanilla`
-
-  > This runs babel-node against your service's index file _without_ livereload enabled.
-
-- `dev:liveReload`
-
-  > Runs nodemon. Watches changes and reloads your server. Intended for use with start:docker:db
-
-- `docker:compose:db`
-
-  > Docker-compose script for _only_ Prisma Engine & MySQL
-
-- `docker:compose:all`
-
-  > Docker-compose script for Prisma Engine, MySQL & your Node service.
-
-- `ci:local`
-
-  > This executes trevor locally
-
-- `ci:remote`
-  > This is called by .travis.yml
 
 ---
 
