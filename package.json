@@ -7,7 +7,7 @@
     "clean": "npm run docker:destroy:allContainers",
     "start:docker:db": "PRISMA_ENDPOINT=http://localhost:4466 npm-run-all --serial docker:compose:db dev",
     "start:docker:all": "PRISMA_ENDPOINT=http://prisma:4466 npm run docker:compose:all",
-    "start:docker:entrypoint": "npm run start:vanilla",
+    "start:docker:entrypoint": "babel-node service/index.js",
     "start:vanilla": "babel-node src/service/index.js",
     "playground": "graphql playground",
     "dev": "npm-run-all --parallel dev:liveReload playground",
