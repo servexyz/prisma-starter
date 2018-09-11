@@ -1,7 +1,8 @@
 import test from "ava";
 import isReachable from "is-reachable";
-const nodemon = require("nodemon");
 import delay from "delay";
+const nodemon = require("nodemon");
+const isTravis = require("is-travis");
 
 test.before(async t => {
   //TODO: Figure out less lazy solution
@@ -17,11 +18,16 @@ test("process.env.PRISMA_HOST is set", t => {
 });
 
 test(`${process.env.PRISMA_HOST}:4000 is reachable`, async t => {
-  let endpoint = `${process.env.PRISMA_HOST}:4000`;
+  let endpoint = isTravis
+    ? `${process.env.PRISMA_HOST}:4000`
+    : `http://localhost:4000`;
   t.true(await isReachable("http://localhost:4000"));
 });
 
 test(`${process.env.PRISMA_HOST}:4466 is reachable`, async t => {
-  let endpoint = `${process.env.PRISMA_HOST}:4466`;
+  let endpoint = isTravis
+    ? `${process.env.PRISMA_HOST}:4466`
+    : `http://localhost:4466`;
+
   t.true(await isReachable("http://localhost:4466"));
 });

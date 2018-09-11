@@ -4255,6 +4255,10 @@ is-symbol@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/is-symbol/-/is-symbol-1.0.1.tgz#3cc59f00025194b6ab2e38dbae6689256b660572"
 
+is-travis@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/is-travis/-/is-travis-2.0.0.tgz#080389f2083ce39c0354baa3f89e7352b0fff28f"
+
 is-typedarray@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/is-typedarray/-/is-typedarray-1.0.0.tgz#e479c80858df0c1b11ddda6940f96011fcda4a9a"
