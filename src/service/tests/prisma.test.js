@@ -10,6 +10,9 @@ test.before(async t => {
   await delay(ms);
 });
 
+test("temp pass", t => {
+  t.pass();
+});
 // test(`http://localhost:4000 is reachable`, async t => {
 //   t.true(await isReachable("http://localhost:4000"));
 // });
