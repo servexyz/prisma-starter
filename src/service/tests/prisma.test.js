@@ -5,7 +5,7 @@ const isTravis = require("is-travis");
 
 test.before(async t => {
   //TODO: Figure out less lazy solution; https://github.com/servexyz/prisma-starter/pull/25#issuecomment-419687114
-  let ms = isTravis ? 8000 : 4000;
+  let ms = isTravis ? 15000 : 5000;
   console.log(`Waiting ${ms}ms before restarting to prevent race case`);
   await delay(ms);
 });
