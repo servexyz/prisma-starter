@@ -6,7 +6,9 @@ const isTravis = require("is-travis");
 test.before(async t => {
   //TODO: Figure out less lazy solution; https://github.com/servexyz/prisma-starter/pull/25#issuecomment-419687114
   let ms = isTravis ? 25000 : 5000;
-  console.log(`Waiting ${ms}ms before restarting to prevent race case`);
+  console.log(
+    `Waiting ${ms}ms before running tests to prevent race case (ie. nodemon or docker-compose)`
+  );
   await delay(ms);
 });
 
@@ -17,11 +19,3 @@ test(`http://localhost:4000 is reachable`, async t => {
 test(`http://localhost:4466 is reachable`, async t => {
   t.true(await isReachable("http://localhost:4466"));
 });
-
-// test(`localhost:4000 is reachable`, async t => {
-//   t.true(await isReachable("localhost:4000"));
-// });
-
-// test(`localhost:4466 is reachable`, async t => {
-//   t.true(await isReachable("localhost:4466"));
-// });
