@@ -1,7 +1,6 @@
 import test from "ava";
 import isReachable from "is-reachable";
 import delay from "delay";
-const nodemon = require("nodemon");
 const isTravis = require("is-travis");
 
 test.before(async t => {
@@ -17,14 +16,14 @@ test(`localhost:4000 is reachable`, async t => {
   t.true(await isReachable("http://localhost:4000"));
 });
 
-test(`localhost:4466 is reachable`, async t => {
-  t.true(await isReachable("http://localhost:4466"));
-});
+// test(`localhost:4466 is reachable`, async t => {
+//   t.true(await isReachable("http://localhost:4466"));
+// });
 
-test(`localhost:4000 is reachable`, async t => {
-  t.true(await isReachable("localhost:4000"));
-});
+// test(`localhost:4000 is reachable`, async t => {
+//   t.true(await isReachable("localhost:4000"));
+// });
 
-test(`localhost:4466 is reachable`, async t => {
-  t.true(await isReachable("localhost:4466"));
-});
+// test(`localhost:4466 is reachable`, async t => {
+//   t.true(await isReachable("localhost:4466"));
+// });
