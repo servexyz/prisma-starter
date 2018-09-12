@@ -4,12 +4,24 @@ import delay from "delay";
 const isTravis = require("is-travis");
 
 test.before(async t => {
-  //TODO: Figure out less lazy solution; relevant GH comment: https://goo.gl/VoYTTW
-  console.log(`Waiting ${ms}ms before restarting to prevent race case`);
+  //TODO: Figure out less lazy solution; https://github.com/servexyz/prisma-starter/pull/25#issuecomment-419687114
+  let ms = isTravis ? 10000 : 5000;
+  console.log(
+    `Waiting ${ms}ms before restarting to prevent race case`
+  );
   await delay(ms);
 });
 
+function repeatReach(url) {
+  let flag = false;
+  if (await isReachable("http://localhost:4000")) {
+    flag = true;
+  } else {
+    await delay(5000)
+  }
+}
 test(`http://localhost:4000 is reachable`, async t => {
+  
   t.true(await isReachable("http://localhost:4000"));
 });
 
