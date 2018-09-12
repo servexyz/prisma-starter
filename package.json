@@ -23,7 +23,7 @@
     "test:db": " npm run test:ava:watch",
     "test:ava": "ava",
     "test:ava:watch": "ava --watch",
-    "ci:remote": "npm run test:all"
+    "ci:remote": "npm run test:ava"
   },
   "dependencies": {
     "bcryptjs": "2.4.3",
