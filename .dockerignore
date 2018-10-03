@@ -3,4 +3,4 @@
 service.Dockerfile
 node_modules
 docs
-README.md
+README.md.*.dockerfile.*.dockerfile.*.dockerfile
