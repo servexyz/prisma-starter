@@ -1,5 +1,15 @@
 type Foo {
   id: ID! @unique
+  createdAt: DateTime!
+  updatedAt: DateTime!
   name: String
   secretFoo: String @default(value: "i r secret")
+}
+
+type SampleJson {
+  id: ID! @unique
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  json: Json
+  jsons: [Json!]!
 }

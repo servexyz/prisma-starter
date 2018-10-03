@@ -1,7 +1,11 @@
-# source: http://localhost:4466/prisma-starter/local
-# timestamp: Wed May 23 2018 15:35:02 GMT-0700 (PDT)
+# source: http://localhost:4466
+# timestamp: Wed Oct 03 2018 13:20:00 GMT-0700 (Pacific Daylight Time)
 
 type AggregateFoo {
+  count: Int!
+}
+
+type AggregateSampleJson {
   count: Int!
 }
 
@@ -10,8 +14,12 @@ type BatchPayload {
   count: Long!
 }
 
+scalar DateTime
+
 type Foo implements Node {
   id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   name: String
   secretFoo: String
 }
@@ -43,18 +51,20 @@ type FooEdge {
 enum FooOrderByInput {
   id_ASC
   id_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
   name_ASC
   name_DESC
   secretFoo_ASC
   secretFoo_DESC
-  updatedAt_ASC
-  updatedAt_DESC
-  createdAt_ASC
-  createdAt_DESC
 }
 
 type FooPreviousValues {
   id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   name: String
   secretFoo: String
 }
@@ -152,6 +162,50 @@ input FooWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
   name: String
 
   """All values that are not equal to given value."""
@@ -238,6 +292,9 @@ input FooWhereUniqueInput {
   id: ID
 }
 
+"""Raw JSON value"""
+scalar Json
+
 """
 The `Long` scalar type represents non-fractional signed whole numeric values.
 Long can represent values between -(2^63) and 2^63 - 1.
@@ -246,11 +303,17 @@ scalar Long
 
 type Mutation {
   createFoo(data: FooCreateInput!): Foo!
+  createSampleJson(data: SampleJsonCreateInput!): SampleJson!
   updateFoo(data: FooUpdateInput!, where: FooWhereUniqueInput!): Foo
+  updateSampleJson(data: SampleJsonUpdateInput!, where: SampleJsonWhereUniqueInput!): SampleJson
   deleteFoo(where: FooWhereUniqueInput!): Foo
+  deleteSampleJson(where: SampleJsonWhereUniqueInput!): SampleJson
   upsertFoo(where: FooWhereUniqueInput!, create: FooCreateInput!, update: FooUpdateInput!): Foo!
+  upsertSampleJson(where: SampleJsonWhereUniqueInput!, create: SampleJsonCreateInput!, update: SampleJsonUpdateInput!): SampleJson!
   updateManyFoos(data: FooUpdateInput!, where: FooWhereInput): BatchPayload!
+  updateManySampleJsons(data: SampleJsonUpdateInput!, where: SampleJsonWhereInput): BatchPayload!
   deleteManyFoos(where: FooWhereInput): BatchPayload!
+  deleteManySampleJsons(where: SampleJsonWhereInput): BatchPayload!
 }
 
 enum MutationType {
@@ -282,8 +345,11 @@ type PageInfo {
 
 type Query {
   foos(where: FooWhereInput, orderBy: FooOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Foo]!
+  sampleJsons(where: SampleJsonWhereInput, orderBy: SampleJsonOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [SampleJson]!
   foo(where: FooWhereUniqueInput!): Foo
+  sampleJson(where: SampleJsonWhereUniqueInput!): SampleJson
   foosConnection(where: FooWhereInput, orderBy: FooOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): FooConnection!
+  sampleJsonsConnection(where: SampleJsonWhereInput, orderBy: SampleJsonOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): SampleJsonConnection!
 
   """Fetches an object given its ID"""
   node(
@@ -292,6 +358,209 @@ type Query {
   ): Node
 }
 
+type SampleJson implements Node {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  json: Json
+  jsons: [Json!]!
+}
+
+"""A connection to a list of items."""
+type SampleJsonConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [SampleJsonEdge]!
+  aggregate: AggregateSampleJson!
+}
+
+input SampleJsonCreateInput {
+  json: Json
+  jsons: SampleJsonCreatejsonsInput
+}
+
+input SampleJsonCreatejsonsInput {
+  set: [Json!]
+}
+
+"""An edge in a connection."""
+type SampleJsonEdge {
+  """The item at the end of the edge."""
+  node: SampleJson!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum SampleJsonOrderByInput {
+  id_ASC
+  id_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  json_ASC
+  json_DESC
+}
+
+type SampleJsonPreviousValues {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  json: Json
+  jsons: [Json!]!
+}
+
+type SampleJsonSubscriptionPayload {
+  mutation: MutationType!
+  node: SampleJson
+  updatedFields: [String!]
+  previousValues: SampleJsonPreviousValues
+}
+
+input SampleJsonSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [SampleJsonSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [SampleJsonSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [SampleJsonSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: SampleJsonWhereInput
+}
+
+input SampleJsonUpdateInput {
+  json: Json
+  jsons: SampleJsonUpdatejsonsInput
+}
+
+input SampleJsonUpdatejsonsInput {
+  set: [Json!]
+}
+
+input SampleJsonWhereInput {
+  """Logical AND on all given filters."""
+  AND: [SampleJsonWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [SampleJsonWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [SampleJsonWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
+}
+
+input SampleJsonWhereUniqueInput {
+  id: ID
+}
+
 type Subscription {
   foo(where: FooSubscriptionWhereInput): FooSubscriptionPayload
+  sampleJson(where: SampleJsonSubscriptionWhereInput): SampleJsonSubscriptionPayload
 }

@@ -1,6 +1,10 @@
 endpoint: ${env:PRISMA_ENDPOINT}
 datamodel: src/database/datamodel.graphql
 
+generate:
+  - generator: javascript-client
+    output: ./prisma-client/
+
 # The secret is used to generate JTWs which allow to authenticate
 # against your Prisma service. You can use the `prisma token` command from the CLI
 # to generate a JWT based on the secret. When using the `prisma-binding` package,
