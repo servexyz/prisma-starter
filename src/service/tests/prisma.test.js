@@ -14,6 +14,7 @@ test.before(async t => {
   console.log(
     `Waiting ${ms}ms before running tests to prevent race case (ie. nodemon or docker-compose)`
   );
+  process.env["PRISMA_ENDPOINT"] = "http://localhost:4466";
   await delay(ms);
 });
 
@@ -26,9 +27,7 @@ test(`http://localhost:4466 is reachable`, async t => {
 });
 
 test(`await prisma.foos() via prisma-client`, async t => {
-  let foos = await prisma.foos();
-  console.log(`foos: ${JSON.stringify(foos, null, 2)}`);
-  t.truthy(foos);
+  t.truthy(await prisma.foos());
 });
 
 test("createSampleJson via graphql-request", async t => {
@@ -55,7 +54,9 @@ test("createSampleJson via graphql-request", async t => {
   t.notThrows(() => {
     request("http://localhost:4000", mutation, variables)
       .then(({ createSampleJson }) => {
-        console.log(`createSampleJson: ${createSampleJson}`);
+        console.log(
+          `createSampleJson: ${JSON.stringify(createSampleJson, null, 2)}`
+        );
       })
       .catch(err => {
         console.log(`err: ${err}`);
