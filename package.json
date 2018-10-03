@@ -1,17 +1,23 @@
 {
   "name": "prisma-starter",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/servexyz/prisma-starter"
+  },
   "scripts": {
-    "start": "npm run start:docker:all",
-    "build": "npm run docker:rebuild:all",
+    "dev": "npm run start:dev",
+    "start": "npm run start:prod",
+    "start:dev": "npm-run-all --serial start:docker:db start:liveReload playground",
+    "start:prod": "npm-run-all --serial start:docker:all playground",
+    "build": "npm run docker:rebuild:db",
     "clean": "npm run docker:destroy:allContainers",
-    "start:docker:db": "PRISMA_ENDPOINT=http://localhost:4466 npm-run-all --serial docker:compose:db dev",
+    "start:docker:db": "PRISMA_ENDPOINT=http://localhost:4466 npm-run-all --serial docker:compose:db start:liveReload",
     "start:docker:all": "PRISMA_ENDPOINT=http://prisma:4466 npm run docker:compose:all",
     "start:docker:entrypoint": "babel-node src/service/index.js",
     "start:vanilla": "babel-node src/service/index.js",
+    "start:liveReload": "nodemon --watch src/service/index.js --exec 'babel-node src/service/index.js'",
     "playground": "graphql playground",
-    "dev": "npm-run-all --parallel dev:liveReload playground",
-    "dev:liveReload": "nodemon --watch src/service/index.js --exec 'babel-node src/service/index.js'",
     "docker:compose:db": "docker-compose -f src/database/docker-compose.db.yml up -d",
     "docker:compose:all": "docker-compose -f .docker-compose.all.yml up -d",
     "docker:destroy:allContainers": "docker rm -f $(docker ps -aqf 'name=prisma')",
@@ -29,7 +35,8 @@
     "bcryptjs": "2.4.3",
     "graphql-yoga": "1.13.1",
     "jsonwebtoken": "8.2.1",
-    "prisma-binding": "1.5.19"
+    "prisma": "^1.17.1",
+    "prisma-binding": "2.1.6"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.40",
@@ -42,13 +49,12 @@
     "babel-plugin-dotenv": "^0.1.1",
     "delay": "^4.0.0",
     "dotenv": "5.0.1",
-    "graphql-cli": "2.16.0",
+    "graphql-cli": "2.16.7",
     "is-reachable": "^2.4.0",
     "is-travis": "^2.0.0",
     "nodemon": "^1.18.4",
     "npm-run-all": "4.1.3",
-    "npm-starter-sample-module": "^0.0.2",
-    "prisma": "1.8.3"
+    "npm-starter-sample-module": "^0.0.4"
   },
   "ava": {
     "files": [

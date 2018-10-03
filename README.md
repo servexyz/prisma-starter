@@ -52,9 +52,15 @@ See [Build Scripts](#build-scripts) for options.
 
 - `start`
 
-  > This is the default entry point to make your development easier. Replace this with "start:docker:db" or "start:docker:all" depending on your preferred development workflow.
+  > Build docker-compose.all.yml (ie. production version).
 
-  [Jump to Start Options](#start-options)
+  [Jump to Start Options](#start-options) for more info on what `start` does
+
+- `dev`
+
+  > Build docker-compose.db.yml (ie. development version).
+
+  [Jump to Start Options](#start-options) for more info on what `dev` does
 
 - `build`
 
