@@ -4,8 +4,12 @@ import isReachable from "is-reachable";
 import delay from "delay";
 import moment from "moment";
 const isTravis = require("is-travis");
-const { prisma } = require("../../../prisma-client");
+const { Prisma } = require("../../../prisma-client");
 import { request } from "graphql-request";
+
+var prisma = new Prisma({
+  endpoint: "http://localhost:4466"
+});
 
 test.before(async t => {
   //TODO: Figure out less lazy solution; https://github.com/servexyz/prisma-starter/pull/25#issuecomment-419687114
@@ -14,7 +18,6 @@ test.before(async t => {
   console.log(
     `Waiting ${ms}ms before running tests to prevent race case (ie. nodemon or docker-compose)`
   );
-  process.env["PRISMA_ENDPOINT"] = "http://localhost:4466";
   await delay(ms);
 });
 
