@@ -1,9 +1,8 @@
 require("dotenv").config();
 import { GraphQLServer } from "graphql-yoga";
-import { Prisma } from "prisma-binding";
+import { Prisma, forwardTo } from "prisma-binding";
 import path from "path";
 
-//TODO: Create resolvers directory with lazy loading index / spread
 const resolvers = {
   Query: {
     allFoos: (parent, args, ctx, info) => {
@@ -13,11 +12,14 @@ const resolvers = {
           }
         : {};
       return ctx.db.query.foos({ where }, info);
-    }
+    },
+    sampleJsons: forwardTo("db")
+  },
+  Mutation: {
+    createSampleJson: forwardTo("db")
   }
 };
 
-//TODO: Replace all endpoints with env variables
 let typeDefs = path.join(__dirname, "schema.graphql");
 const server = new GraphQLServer({
   typeDefs,

@@ -1,3 +1,7 @@
+#import SampleJson, Query.sampleJsons, Mutation.createSampleJson from "./generated/prisma.graphql"
+
+scalar Json
+
 type Query {
   allFoos(name: String): [Foo]!
 }
