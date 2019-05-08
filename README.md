@@ -1,23 +1,13 @@
-# Prisma Starter
+![logo](docs/logo/PRStar.svg)
 
-> Run your prisma service as a docker container with the prisma engine and MySQL Database.
+> WHAT: Run your prisma service as a docker container with the prisma engine and MySQL Database.
+> 
+> WHY: There are 3 services that must work together. Running them in docker required some magic. 
 
-![travis test badge](https://travis-ci.org/servexyz/prisma-starter.svg?branch=master)
+> WHO: Anyone using Prisma & MySQL
 
-<!-- TOC -->
+![travis](https://travis-ci.org/servexyz/prisma-starter.svg?branch=master)
 
-- [Prisma Starter](#prisma-starter)
-  - [Getting Started](#getting-started)
-    - [Where :: Code](#where--code)
-    - [Where :: Servers](#where--servers)
-    - [Build Scripts](#build-scripts)
-      - [Terminal Scripts](#terminal-scripts)
-      - [Start Options](#start-options)
-      - [Build Options](#build-options)
-    - [localhost:4466 vs prisma:4466](#localhost4466-vs-prisma4466)
-    - [Gif Demo](#gif-demo)
-
-<!-- /TOC -->
 
 ## Getting Started
 
@@ -30,14 +20,14 @@ See [Build Scripts](#build-scripts) for options.
 ### Where :: Code
 
 | Directory      | Description                       |
-| :------------- | :-------------------------------- |
+|----------------|-----------------------------------|
 | src/`service`  | Our service which utilizes Prisma |
 | src/`database` | MySQL                             |
 
 ### Where :: Servers
 
 | Purpose           | URI   | Port |
-| :---------------- | :---- | :--- |
+|-------------------|-------|------|
 | Prisma Service    | local | 4000 |
 | Prisma ORM Engine | local | 4466 |
 | Database          | local | 3306 |
