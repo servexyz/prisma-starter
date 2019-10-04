@@ -30,14 +30,17 @@
     "test:ava": "ava",
     "test:ava:watch": "ava --watch",
     "ci:remote": "npm run test:all",
-    "pdpg": "prisma deploy && prisma generate"
+    "pdpg": "prisma deploy && prisma generate",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "dependencies": {
     "bcryptjs": "2.4.3",
     "graphql-yoga": "1.17.4",
     "jsonwebtoken": "8.5.1",
     "prisma": "^1.34.0",
-    "prisma-binding": "2.3.11"
+    "prisma-binding": "2.3.11",
+    "snyk": "^1.230.5"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
@@ -88,5 +91,6 @@
         }
       ]
     ]
-  }
+  },
+  "snyk": true
 }
